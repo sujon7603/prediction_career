@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pathwise – AI career prediction & skill gap analysis</title>
+<meta name="description" content="Tell us your skills, get your best-fit career, then see the skill gap for any career you choose.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav">
+  <a class="logo" href="#top"><span class="mark"></span><img src="img/core4.png" alt="Pathwise"></a>
+  <nav>
+    <a href="#predict">Predict career</a>
+    <a href="#analyzer">Skill gap</a>
+    <a href="#roles">Careers</a>
+    <a class="btn small" href="#predict">Start free</a>
+    <span id="userChip" class="userchip" hidden></span>
+    <button id="logoutBtn" class="btn small ghost" type="button">Log out</button>
+  </nav>
+</header>
+
+<div id="banner" class="banner" hidden></div>
+
+<main id="top">
+<section class="hero">
+  <div class="hero-text">
+    <h1>Find the career that fits your skills.</h1>
+    <p>Tell us what you can already do. Our AI predicts your best-fit career, and if you prefer a different one, we show exactly which skills you are missing and how long they take to learn.</p>
+    <div class="cta">
+      <a class="btn" href="#predict">Predict my career</a>
+      <a class="btn ghost" href="#roles">Browse careers</a>
+    </div>
+    <ul class="proof">
+      <li><b>6</b> careers</li>
+      <li><b>14</b> skills tracked</li>
+      <li><b>2 min</b> to a plan</li>
+    </ul>
+  </div>
+  <div class="hero-viz" aria-hidden="true">
+    <div class="bars">
+      <div><span>Python</span><i style="--w:100%" class="have"></i></div>
+      <div><span>Statistics</span><i style="--w:80%" class="have"></i></div>
+      <div><span>Machine Learning</span><i style="--w:55%" class="part"></i></div>
+      <div><span>Deep Learning</span><i style="--w:20%" class="gap"></i></div>
+      <div><span>Cybersecurity</span><i style="--w:8%" class="gap"></i></div>
+    </div>
+    <p class="legend"><b class="have"></b>Have <b class="part"></b>Learning <b class="gap"></b>Gap</p>
+  </div>
+</section>
+
+<section id="predict" class="analyzer">
+  <h2>1. Predict your career</h2>
+  <p class="sub">Tap every skill you already have, then press the button. The AI model ranks the careers that fit you best.</p>
+  <div class="panel">
+    <div class="left">
+      <label>Your skills <small>(tap to toggle)</small></label>
+      <div id="skills" class="chips"></div>
+      <button id="predictBtn" class="btn action" type="button">Predict my career</button>
+      <p id="predictMsg" class="msg"></p>
+    </div>
+    <div class="right" aria-live="polite">
+      <h3>Your career matches</h3>
+      <div id="results" class="results">
+        <p class="empty">Your results will appear here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="analyzer" class="analyzer">
+  <h2>2. Skill gap for any career</h2>
+  <p class="sub">Want a different career than the one we predicted? Pick it here. We compare it with the skills you selected above.</p>
+  <div class="panel">
+    <div class="left">
+      <label for="role">Target career</label>
+      <select id="role"></select>
+      <p id="roleDesc" class="roledesc"></p>
+      <label>Skills this career needs</label>
+      <div id="gapChips" class="chips static"></div>
+      <p class="hint"><span class="dot have"></span>You have it &nbsp; <span class="dot gap"></span>Missing</p>
+    </div>
+    <div class="right" aria-live="polite">
+      <div class="ring" id="ring"><div><strong id="pct">0%</strong><span>career match</span></div></div>
+      <p id="verdict" class="verdict"></p>
+      <h3>Your learning plan</h3>
+      <ol id="plan" class="plan"></ol>
+      <p id="eta" class="eta"></p>
+    </div>
+  </div>
+</section>
+
+<section id="roles" class="roles">
+  <h2>Careers you can explore</h2>
+  <div class="role-grid" id="roleGrid"></div>
+</section>
+
+<section id="how" class="how">
+  <h2>How Pathwise works</h2>
+  <div class="steps">
+    <div><h3>Tell us your skills</h3><p>Select the skills you already have from our list of 14 in-demand skills.</p></div>
+    <div><h3>AI predicts your career</h3><p>A machine learning model trained on career data ranks the careers that fit your skills best.</p></div>
+    <div><h3>Close the gap</h3><p>Choose any career and get an ordered learning plan with estimated weeks for each missing skill.</p></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p><b>Pathwise</b> – AI career platform &amp; skill gap analysis. Career data is illustrative.</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
