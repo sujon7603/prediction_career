@@ -10,10 +10,6 @@ async function api(path, body) {
     ? { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }
     : undefined;
   const res = await fetch(path, options);
-  if (res.status === 401) {
-    location.replace("/login");   // not logged in (or session ended)
-    throw new Error("Please log in.");
-  }
   if (!res.ok) {
     let detail = "";
     try { detail = (await res.json()).detail; } catch (e) {}
@@ -187,17 +183,6 @@ function renderRoles() {
   });
 }
 
-// ---------- logged-in user ----------
-function showUser(user) {
-  const chip = $("userChip");
-  chip.textContent = "Hi, " + user.name.split(" ")[0];
-  chip.hidden = false;
-  $("logoutBtn").onclick = async () => {
-    try { await fetch("/api/auth/logout", { method: "POST" }); } catch (e) {}
-    location.replace("/login");
-  };
-}
-
 // ---------- start ----------
 async function init() {
   if (location.protocol === "file:") {
@@ -205,11 +190,8 @@ async function init() {
     return;
   }
   try {
-    const me = await api("/api/auth/me");
-    showUser(me.user);
     META = await api("/api/meta");
   } catch (err) {
-    if (err.message === "Please log in.") return;
     showBanner("Cannot reach the Pathwise server. Make sure run.bat is still running, then refresh.");
     return;
   }
